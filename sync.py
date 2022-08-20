@@ -4,7 +4,10 @@ import time
 import datetime
 import os
 
-os.chdir("./Media")
+try:
+    os.chdir("./Media")
+except:
+    print("No directory Media found. If program is executed in Media, there should be no problems.")
 
 args = sys.argv
 try:
@@ -40,7 +43,7 @@ if (time_to_play != None):
     else:
         seconds_to_wait = 24*60*60 - now_in_seconds + target_in_seconds
 
-    print(time.strftime("Time at excecution: %H:%M:%S", now))
+    print(time.strftime("Time at execution: %H:%M:%S", now))
     print("Seconds to wait:")
 
     while(seconds_to_wait > 0):
@@ -52,6 +55,10 @@ if (time_to_play != None):
 player.play()
 time.sleep(0.05)
 duration = player.get_length()
-player.play()
+try:
+    player.play()
+except:
+    print("ERROR while playing media")
+    exit(1)
+
 time.sleep(duration)
-# time.sleep(media.get_duration())
