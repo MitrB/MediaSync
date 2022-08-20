@@ -2,6 +2,9 @@ import vlc
 import sys
 import time
 import datetime
+import os
+
+os.chdir("./Media")
 
 args = sys.argv
 m = str(args[1])
